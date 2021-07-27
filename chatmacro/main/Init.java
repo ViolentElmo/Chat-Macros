@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Init implements ModInitializer {
+public class Init implements ModInitializer { //I put this text here so I could make another commit
 
     public static MinecraftClient mc = MinecraftClient.getInstance();
     public static ArrayList<Macro> macros = new ArrayList<Macro>();
@@ -46,7 +46,7 @@ public class Init implements ModInitializer {
             macros.clear();
             Gson gson = new Gson();
             try {
-                Macro[] macroList = gson.fromJson(new FileReader("chatmacros/chatmacros.json"), Macro[].class);
+                Macro[] macroList = gson.fromJson(new FileReader("chatmacros/chatmacros.json"), Macro[].class); 
                 for (Macro i : macroList) {
                     macros.add(i);
                 }
