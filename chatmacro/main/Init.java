@@ -42,7 +42,7 @@ public class Init implements ModInitializer {
     public void onInitialize() {
         ChatMacros.registerLambdaFactory();
         ChatMacros.EVENT_BUS.subscribe(this);
-        ClientPlayConnectionEvents.JOIN.register((a, b, c) -> { //I never worked with JSON files before cut me some slack lol
+        ClientLifecycleEvents.CLIENT_STARTED.register((a) -> { //I never worked with JSON files before cut me some slack lol
             macros.clear();
             Gson gson = new Gson();
             try {
@@ -55,7 +55,7 @@ public class Init implements ModInitializer {
             }
         });
 
-        ClientPlayConnectionEvents.DISCONNECT.register((a, b) -> { //i never did this before dont judge my approach lmao
+        ClientLifecycleEvents.CLIENT_STOPPING.register((a) -> { //i never did this before dont judge my approach lmao
             //THIS TOOK 3 AND A HALF HOURS TO GET TO WORK
             File f = new File("chatmacros/chatmacros.json");
             File folder = new File("chatmacros");
