@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Init implements ModInitializer { //I put this text here so I could make another commit
+public class Init implements ModInitializer {
 
     public static MinecraftClient mc = MinecraftClient.getInstance();
     public static ArrayList<Macro> macros = new ArrayList<Macro>();
@@ -43,7 +43,6 @@ public class Init implements ModInitializer { //I put this text here so I could 
         ChatMacros.registerLambdaFactory();
         ChatMacros.EVENT_BUS.subscribe(this);
         ClientLifecycleEvents.CLIENT_STARTED.register((a) -> { //I never worked with JSON files before cut me some slack lol
-            macros.clear();
             Gson gson = new Gson();
             try {
                 Macro[] macroList = gson.fromJson(new FileReader("chatmacros/chatmacros.json"), Macro[].class); 
